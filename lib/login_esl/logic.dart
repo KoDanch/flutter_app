@@ -38,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         try {
           final data = await fetchUserData();
 
-          final posts = await fetchPosts();
+          //final posts = await fetchPosts();
 
           emit(state.copyWith(
               isSubmitting: false, isAuth: true, userData: data));

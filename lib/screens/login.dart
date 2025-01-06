@@ -1,9 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/login_esl/event.dart';
 import 'package:flutter_app/login_esl/logic.dart';
 import 'package:flutter_app/login_esl/state.dart';
 import 'package:flutter_app/main.dart';
+import 'package:flutter_app/retrofit/ApiService.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+final dio = Dio();
+final apiService = ApiService(dio);
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -11,7 +16,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(),
+      create: (_) => LoginBloc(apiService),
       child: Scaffold(
         body: Center(
           child: Padding(
